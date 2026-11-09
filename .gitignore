@@ -1,0 +1,4 @@
+patient_records.csv
+__pycache__/
+.venv/
+.env
