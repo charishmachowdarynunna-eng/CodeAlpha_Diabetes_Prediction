@@ -166,6 +166,7 @@ This project demonstrates a machine-learning workflow involving dataset preparat
 It also demonstrates how machine learning can be integrated with a Streamlit web application, along with basic patient-record management features.
 
 The project was developed as part of the CodeAlpha Machine Learning Internship – Task 4.
+
 13. Project Demo
 
 [Watch Diabetes Prediction System Demo](https://drive.google.com/file/d/1SwvGXFRdVswfZ8AIy7cyDN6pvb6GM-LD/view?usp=drive_link)
