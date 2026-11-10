@@ -1,192 +1,171 @@
-Diabetes Prediction System
+# Diabetes Prediction System
 
-CodeAlpha Machine Learning Internship -- Task 4
+**CodeAlpha Machine Learning Internship – Task 4**
 
 1. Project Overview
 
-Diabetes Prediction System is a learning project that uses selected attributes to estimate whether a record is classified as diabetic or non‑diabetic by a trained model.
+Diabetes Prediction System is a machine-learning project that uses selected medical attributes to estimate whether a record is classified as diabetic or non-diabetic by a trained model.
 
-The project has a Streamlit web application where users can type in patient details see model predictions look at saved records edit patient details and delete records.
+The project includes a Streamlit web application where users can enter sample patient details, view model predictions, access saved records, update patient details and delete records.
 
-Important: Diabetes Prediction System is for learning and demonstration. Diabetes Prediction System is not a device and must not be used to diagnose diabetes or make healthcare decisions. Use sample records for demonstrations; do not enter real patients personal or medical information.
 
 2. Objectives
 
--. Prepare a diabetes dataset.
-
-- Train and compare multiple machine‑learning classification algorithms.
-
--. Save the best‑performing model based on the evaluation used in the training script.
-
+- Prepare and process a diabetes dataset.
+- Train and compare multiple machine-learning classification algorithms.
+- Select and save the best-performing model based on the evaluation performed in the training script.
 - Build a web interface for entering sample data and viewing predictions.
-
-- Demonstrate basic patient‑record management: viewing, updating and deleting records.
+- Demonstrate basic patient-record management, including viewing, updating and deleting records.
 
 3. Dataset
 
-The training script downloads the diabetes dataset from:
+The project uses the Pima Indians Diabetes Dataset.
 
+Dataset source:
 https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv
 
+The dataset contains the following features:
+
 - Pregnancies
-
 - Glucose
-
 - BloodPressure
-
 - SkinThickness
-
 - Insulin
-
 - BMI
-
 - DiabetesPedigreeFunction
-
 - Age
 
-The target column is Outcome (0 or 1).
+The target column is `Outcome` (0 or 1).
 
-The dataset is commonly known as the Pima Indians Diabetes dataset. The dataset represents a study population and has limitations; its results may not generalize to other populations. The models predictions should not be interpreted as conclusions.
+The dataset represents a specific study population and has limitations. Its results may not generalize to other populations.
 
-4. Machine‑Learning Algorithms
+4. Machine Learning Algorithms
 
-The training script compares:
+The training script compares three classification algorithms:
 
-- Regression – a classification algorithm that estimates the probability of a class.
+- **Logistic Regression:** Estimates the probability of a record belonging to a particular class.
+- **Random Forest:** Uses multiple decision trees to make predictions.
+- **Support Vector Machine (SVM):** Finds a decision boundary between different classes.
 
-- Random Forest – an ensemble of decision trees whose predictions are combined.
-
-- Support Vector Machine (SVM) – a model that finds a decision boundary between classes.
-
-The script splits the data into training and testing sets applies preprocessing evaluates the models and saves the model selected by the script.
+The model selected by the training script is saved for use in the Streamlit application.
 
 5. Data Preprocessing and Evaluation
 
-The training script:
+The training script performs the following operations:
 
 - Replaces zero values in selected columns (Glucose, BloodPressure, SkinThickness, Insulin and BMI) with missing values.
-
-- Uses median imputation for missing values.
-
+- Uses median imputation to handle missing values.
 - Scales features for Logistic Regression and SVM.
-
 - Splits the dataset into training and testing sets.
-
-- Prints accuracy and a classification report for each model.
-
-- Creates a model‑accuracy comparison chart and a confusion‑matrix image for the selected model.
-
-The training script prints exact evaluation results when diabetes_prediction.py runs. Refer to those results of guessing accuracy.
-
+- Evaluates models using accuracy and classification reports.
+- Generates a model-accuracy comparison chart.
+- Generates a confusion matrix for the selected model.
 6. Application Features
 
-The Streamlit application (app.py) provides:
+The Streamlit web application provides the following features:
 
-- Home: project introduction.
+- **Home:** Displays the project introduction.
+- **Predict Diabetes:** Allows users to enter sample patient details and obtain a model prediction.
+- **Patient Records:** Displays saved sample patient records.
+- **Update Patient Details:** Allows users to edit existing records and recalculate predictions.
+- **Delete Patient Record:** Allows users to delete selected records with confirmation.
 
-- Predict Diabetes: enter an ID, name and feature values to obtain a model prediction.
+Patient records are stored locally in `patient_records.csv`.
 
-- Patient Records: view saved sample records.
+7. Project Structure
 
-- Update Patient Details: edit a selected record and recalculate its prediction.
-
-- Delete Patient Record: select and remove a record with a confirmation checkbox.
-
-Records are stored locally in patient_records.csv. This is a demonstration storage method, not a secure medical‑record system.
-
-7. Project Files
-
-Codealpha_Diabetes_Prediction/
-
+```text
+CodeAlpha_Diabetes_Prediction/
+│
 ├── diabetes_prediction.py
-
 ├── app.py
-
 ├── diabetes_model.pkl
-
 ├── diabetes_model_comparison.png
-
 ├── diabetes_confusion_matrix.png
+├── patient_records.csv
+├── README.md
+│
+└── screenshots/
+    ├── home_page.png
+    ├── diabetic_result.png
+    └── non_diabetic_result.png
+```
 
-├── patient_records.csv # created when records are saved
+Note: `patient_records.csv` is created when records are saved.
 
-└── README.md
-
-8. Requirements
+8. Technologies and Requirements
 
 - Python
-
 - NumPy
-
 - Pandas
-
 - Matplotlib
-
-- Scikit‑learn
-
+- Scikit-learn
 - Joblib
-
 - Streamlit
 
-Install the required packages from the VS Code terminal:
+Install the required packages using:
 
+```bash
 python -m pip install numpy pandas matplotlib scikit-learn joblib streamlit
+```
 
 9. How to Run the Project
 
-Step 1: Open the project folder
+**Step 1: Open the project folder**
 
-Codealpha_Diabetes_Prediction in VS Code.
+Open `CodeAlpha_Diabetes_Prediction` in VS Code.
 
-Step 2: Train the model
+**Step 2: Train the model**
 
-Run:
+Run the following command:
 
+```bash
 python diabetes_prediction.py
+```
 
-This downloads the dataset, trains. Evaluates the models and creates the model and evaluation images. I hope you find this useful.
+This downloads the dataset, trains and evaluates the models, and generates the trained model and evaluation images.
 
-Step 3: Start the web application
+**Step 3: Start the Streamlit application**
 
 Run:
 
+```bash
 python -m streamlit run app.py
+```
 
-Streamlit will show an address in the terminal. Open that address, in a browser to use the application. I hope you enjoy using the app.
+Streamlit will display a local URL in the terminal. Open that URL in your browser to access the application.
 
-Note: Run the training script before starting the app if
+Note: Run the training script before starting the application if `diabetes_model.pkl` has not been created.
 
-diabetes_model.pkl has not yet been created.
+ 10. Project Screenshots
 
-10. Limitations
+### 1. Home Page
 
-- demonstration is a demonstration, not a clinically validated
+![Home Page](screenshots/home_page.png)
 
-prediction system.
+### 2. Diabetes Prediction
 
+![Diabetes Prediction](screenshots/diabetic_result.png)
+
+### 3. No Diabetes Prediction
+
+![No Diabetes Prediction](screenshots/non_diabetic_result.png)
+
+11. Limitations
+
+- This is an educational demonstration, not a clinically validated prediction system.
 - The dataset is limited and may not represent all populations.
+- Model performance on a test dataset does not guarantee accurate predictions for new records.
+- Patient records are stored in a local CSV file and are not protected like records in a secure healthcare system.
+- Real personal or medical information should not be entered into this demonstration application.
 
-- Model performance on a held-out test set does not guarantee
+12. Conclusion
 
-predictions for new people.
+This project demonstrates a machine-learning workflow involving dataset preparation, preprocessing, model training, model comparison, evaluation and saving a trained model.
 
-- Patient records are stored in a local CSV file and are not protected
+It also demonstrates how machine learning can be integrated with a Streamlit web application, along with basic patient-record management features.
 
-like records in a secure healthcare system.
+The project was developed as part of the CodeAlpha Machine Learning Internship – Task 4.
+13. Project Demo
 
-- Do not use real personal or medical information in demonstration
-
-demonstration.
-
-11. Conclusion
-
-project demonstrates a machine-learning workflow: dataset
-
-preparation, model training, model comparison, evaluation saving a
-
-trained model and connecting it to a Streamlit application. Project also
-
-demonstrates local record-management features, for educational
-
-purposes.
-
+[Watch Diabetes Prediction System Demo](https://drive.google.com/file/d/1SwvGXFRdVswfZ8AIy7cyDN6pvb6GM-LD/view?usp=drive_link)
